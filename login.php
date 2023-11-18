@@ -16,26 +16,58 @@
         .content {
             border: 1px solid #eee6e6;
         }
+
+        .petraBlue{
+            color: #03396c;
+        }
+        .petraBlue-bold{
+            font-weight: bold;
+            color: #03396c;
+        }
+
+        .grid{
+            display: grid;
+            place-items: center;
+        }
+
+        html, body{
+            height: 100%;
+        }
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .row{
+            margin-left: 0;
+            margin-right: 0;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container content center pt-2 pb-2 mt-5 w-50 rounded-4">
-        <div class="row text-center">
-            <div class="col-12">
-                <h2 style="font-weight: bold; color: #03396c;">LOGIN</h2>
-            </div>
-            <div class="col-12">
-                <label for="">Username</label>
-                <input type="text" id="username" class="form-control">
-            </div>
-            <div class="col-12">
-                <label for="">Password</label>
-                <input type="password" id="password" class="form-control">
-            </div>
-
-            <div class="col-12">
-                <button class="btn mt-3" style="font-weight: bold; background-color: #03396c; color: white;">LOGIN</button>
+    <div class="container h-100">
+        <div class="content content center pt-2 pb-2 w-50 rounded-4">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h2 class="petraBlue-bold">LOGIN</h2>
+                </div>
+                <div class="col-12 pb-2">
+                    <label for="" class="float-start" style="font-size: larger;">Username</label>
+                    <input type="text" id="username" class="form-control">
+                </div>
+                <div class="col-12 pb-3">
+                    <label for="" class="float-start" style="font-size: larger;">Password</label>
+                    <input type="password" id="password" class="form-control">
+                </div>
+                <div class="col-12 pb-2">
+                    <button class="btn float-start" style="font-weight: bold; background-color: #03396c; color: white;">LOGIN</button>
+                </div>
+                <div class="col-12">
+                    <label for="" class="float-start mb-2"><a href="register.php" style="text-decoration: none;" class="petraBlue">Dont have an account?</a></label>
+                </div>
             </div>
         </div>
     </div>
