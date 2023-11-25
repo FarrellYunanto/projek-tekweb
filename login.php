@@ -11,6 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
         .content {
@@ -55,15 +59,15 @@
                     <h2 class="petraBlue-bold">LOGIN</h2>
                 </div>
                 <div class="col-12 pb-2">
-                    <label for="" class="float-start" style="font-size: larger;">Username</label>
-                    <input type="text" id="username" class="form-control">
+                    <label for="" class="float-start" style="font-size: larger;">Email</label>
+                    <input type="text" id="email" class="form-control">
                 </div>
                 <div class="col-12 pb-3">
                     <label for="" class="float-start" style="font-size: larger;">Password</label>
                     <input type="password" id="password" class="form-control">
                 </div>
                 <div class="col-12 pb-2">
-                    <button class="btn float-start" style="font-weight: bold; background-color: #03396c; color: white;">LOGIN</button>
+                    <button class="btn float-start" style="font-weight: bold; background-color: #03396c; color: white;" onclick="sendData()">LOGIN</button>
                 </div>
                 <div class="col-12">
                     <label for="" class="float-start mb-2"><a href="register.php" style="text-decoration: none;" class="petraBlue">Dont have an account?</a></label>
@@ -71,6 +75,40 @@
             </div>
         </div>
     </div>
+    <script>
+        function sendData(){
+            var email = $(`#email`).val();
+            var password = $(`#password`).val();
+            var processType = 2;
+    
+    
+            var formData = {
+                email: email,
+                password: password,
+                processType:processType,
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: formData,
+                dataType: "json",
+                success: (e) => {
+                    console.log(e);
+                    if (!e.success) {
+                        Swal.fire({
+                            title: "Failed",
+                            text: e.message,
+                            icon: "error",
+                            button: "OK"
+                        });
+                    } else if (e.success) {
+                        window.location.href = "./home/listRuang.php";
+                    }
+                }
+            });
+        }
+    </script>
 
 </body>
 

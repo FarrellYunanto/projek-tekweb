@@ -21,7 +21,8 @@ if(isset($_POST['processType']) && $_POST['processType'] == 1){
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            header("location: ./home/listRuang.php");
+            $success = true;
+            // header("Location: ./home/listRuang.php");
         } else {
             $message = "Wrong password or email!";
         }
