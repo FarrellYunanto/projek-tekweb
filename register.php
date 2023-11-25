@@ -12,35 +12,44 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
     <style>
         .content {
             border: 1px solid #eee6e6;
         }
 
-        .petraBlue{
+        .petraBlue {
             color: #03396c;
         }
-        .petraBlue-bold{
+
+        .petraBlue-bold {
             font-weight: bold;
             color: #03396c;
         }
 
-        .grid{
+        .grid {
             display: grid;
             place-items: center;
         }
 
-        html, body{
+        html,
+        body {
             height: 100%;
         }
 
-        .container{
+        .container {
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .row{
+        .row {
             margin-left: 0;
             margin-right: 0;
         }
@@ -55,30 +64,74 @@
                     <h2 class="petraBlue-bold">REGISTER</h2>
                 </div>
                 <div class="col-12 pb-2">
-                    <label for="" class="float-start" style="font-size: larger;">First Name</label>
-                    <input type="text" id="firstName" class="form-control" required>
+                    <label for="" class="float-start" style="font-size: larger;">Nama lengkap</label>
+                    <input type="text" id="fullName" class="form-control" required>
                 </div>
                 <div class="col-12 pb-2">
-                    <label for="" class="float-start" style="font-size: larger;">Email (Petra)</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                <div class="col-12 pb-2">
-                    <label for="" class="float-start" style="font-size: larger;">Username</label>
-                    <input type="text" id="username" class="form-control" required>
+                    <label for="" class="float-start" style="font-size: larger;">NRP</label>
+                    <input type="text" id="nrp" class="form-control" required>
                 </div>
                 <div class="col-12 pb-3">
                     <label for="" class="float-start" style="font-size: larger;">Password</label>
                     <input type="password" id="password" class="form-control" required>
                 </div>
                 <div class="col-12 pb-2">
-                    <button class="btn float-start" style="font-weight: bold; background-color: #03396c; color: white;">SIGN UP</button>
+                    <button class="btn float-start"
+                        style="font-weight: bold; background-color: #03396c; color: white;" onclick="sendData()">SIGN UP</button>
                 </div>
                 <div class="col-12">
-                    <label for="" class="float-start mb-2"><a href="login.php" style="text-decoration: none;" class="petraBlue">Already have an account?</a></label>
+                    <label for="" class="float-start mb-2"><a href="login.php" style="text-decoration: none;"
+                            class="petraBlue">Already have an account?</a></label>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function sendData(){
+            var nrp = $(`#nrp`).val();
+            var nama = $('#fullName').val();
+            var password = $(`#password`).val();
+            var email = nrp.concat("@john.petra.ac.id");
+            var processType = 1;
+    
+    
+            var formData = {
+                nrp: nrp,
+                nama: nama,
+                password: password,
+                email: email,
+                processType:processType,
+            };
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: formData,
+                dataType: "json",
+                success: (e) => {
+                    console.log(e);
+                    if (!e.success) {
+                        Swal.fire({
+                            title: "Failed",
+                            text: e.message,
+                            icon: "error",
+                            button: "OK"
+                        });
+                    } else if (e.success) {
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: e.message,
+                            icon: "success",
+                            button: "OK"
+                        });
+                    }
+                }
+            });
+            $(`#nrp`).val('');
+            $(`#fullName`).val('');
+            $(`#password`).val('');
+        }
+    </script>
 
 </body>
 
