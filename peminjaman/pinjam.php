@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Kode Ruang</label>
-                    <input type="text" id="kodeRuang" class="form-control" placeholder="P204" disabled>
+                    <input type="text" id="kodeRuang" class="form-control" value="P204" placeholder="P204" disabled>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Tanggal</label>
@@ -73,7 +73,7 @@
                     <label for="" class="float-start" style="font-size: larger;">Mulai</label>
                     <input type="text" id="mulai" class="form-control" placeholder="hhmm" required>
                 </div>
-                <div class="col-6 pb-2">
+                <div class="col-6 pb-2 accordion">
                     <label for="" class="float-start" style="font-size: larger;">Selesai</label>
                     <input type="text" id="selesai" class="form-control" placeholder="hhmm" required>
                 </div>
@@ -116,9 +116,9 @@
             var kodeRuang = $(`#kodeRuang`).val();
             var tanggal = $('#tanggal').val();
             var mulai = $(`#mulai`).val();
-            var selesai = $(`#selesai`).val;
-            var acara = $(`#acara`).val;
-            var keterangan = acara.concat("|", $(`#keterangan`).val);
+            var selesai = $(`#selesai`).val();
+            var acara = $(`#acara`).val();
+            var keterangan = acara.concat("|", $(`#keterangan`).val());
 
             var formData = {
                 kodeRuang: kodeRuang,
@@ -148,7 +148,6 @@
                             icon: "success",
                             button: "OK"
                         });
-                        $(`#kodeRuang`).val('');
                         $(`#tanggal`).val('dd/mm/yy');
                         $(`#mulai`).val('');
                         $(`#selesai`).val('');
