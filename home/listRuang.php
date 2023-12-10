@@ -1,3 +1,8 @@
+<?php
+    require("process.php");
+    $title = "room";
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +21,7 @@
     <div class="container">
         <div class="row">
         
-            <div class="col mt-5 pb-5">
+            <div class="col lg-4 md-4 sm-6 mt-5 pb-5">
                 <!--Card--> 
                 <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
