@@ -44,7 +44,7 @@ if (isset($_POST['kodeRuang']) && isset($_POST['tanggal']) && isset($_POST['mula
                 }
 
                 if(strlen($pinjam['end']) > 3){
-                    $selesaiSplit = str_split($pinjam['start'], 2);
+                    $selesaiSplit = str_split($pinjam['end'], 2);
                 } else {
                     $hh = substr($pinjam['end'], 0, 1); // Get the first character
                     $mm = substr($pinjam['end'], 1);
