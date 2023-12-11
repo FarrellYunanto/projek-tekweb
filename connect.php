@@ -19,5 +19,5 @@ try {
     echo "Error Connect to Database Msg: ".$e->getMessage();
 }
 
-session_start();
+// session_start();
 ?>
