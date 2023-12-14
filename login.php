@@ -80,12 +80,14 @@
             var email = $(`#email`).val();
             var password = $(`#password`).val();
             var processType = 2;
-    
-    
+            var emailType = email.split("@");
+            var userType = emailType[1];
+            
             var formData = {
                 email: email,
                 password: password,
-                processType:processType,
+                processType: processType,
+                emailType: userType
             };
 
             $.ajax({

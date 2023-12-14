@@ -3,6 +3,7 @@ require("connect.php");
 session_start();
 $success = false;
 $message = '';
+$db = $conn;
 // processType 1 = register
 if(isset($_POST['processType']) && $_POST['processType'] == 1){
     //cek data tidak boleh ada yang kosong
@@ -30,18 +31,50 @@ if(isset($_POST['processType']) && $_POST['processType'] == 1){
 } else if (isset($_POST['processType']) && $_POST['processType'] == 2){
     //password dan emai ltidak boleh kosong
     if(isset($_POST['password']) && isset($_POST['email'])){
-        //cek apakah ada yang password dan emailnya cocok
-        $stmt = $conn->prepare(
-        "SELECT email, password 
-        FROM `user` 
-        WHERE email = \"" . $_POST['email'] . "\" AND password = \"" . $_POST['password'] . "\"");
-        $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-            $success = true;
-            $_SESSION['username'] = "nurdin";
-            $_SESSION['user_type'] = "bukanadmin";
-        } else {
-            $message = "Wrong password or email!";
+        if ($_POST['emailType'] == "john.petra.ac.id") { // kalau user
+            //cek apakah ada yang password dan emailnya cocok
+            $stmt = $conn->prepare(
+            "SELECT email, password 
+            FROM `user` 
+            WHERE email = \"" . $_POST['email'] . "\" AND password = \"" . $_POST['password'] . "\"");
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                //ambil data user buat session
+                $query = "SELECT " . "id_user, nama" . 
+                " FROM user
+                where email = \"" . $_POST['email'] . "\"";
+                $request = $db->query($query);
+                $userData = $request->fetch();
+    
+                $success = true;
+                $_SESSION['id'] = $userData['id_user'];
+                $_SESSION['username'] = $userData['nama'];
+                $_SESSION['user_type'] = "bukanadmin";
+            } else {
+                $message = "Wrong password or email!";
+            }
+        } else { // kalau admin
+            //cek apakah ada yang password dan emailnya cocok
+            $stmt = $conn->prepare(
+            "SELECT email, password 
+            FROM `admin` 
+            WHERE email = \"" . $_POST['email'] . "\" AND password = \"" . $_POST['password'] . "\"");
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                //ambil data user buat session
+                $query = "SELECT " . "id_admin, nama" . 
+                " FROM admin
+                where email = \"" . $_POST['email'] . "\"";
+                $request = $db->query($query);
+                $userData = $request->fetch();
+    
+                $success = true;
+                $_SESSION['id'] = $userData['id_admin'];
+                $_SESSION['username'] = $userData['nama'];
+                $_SESSION['user_type'] = "admin";
+            } else {
+                $message = "Wrong password or email!";
+            }
         }
     } else {
         $message = "Error, data tidak lengkap!";
