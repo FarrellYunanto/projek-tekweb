@@ -33,4 +33,42 @@ function fetch_ruangan($db, $tableName, $columns) {
     return $msg; 
 }
 
+function convert_start_end($start, $end){
+    $result = [];
+
+    if (strlen($start) > 3) {
+        $mulaiSplit = str_split($start, 2);
+    } else {
+        $hh = substr($start, 0, 1);
+        $mm = substr($start, 1);
+
+        $mulaiSplit[0] = $hh;
+        $mulaiSplit[1] = $mm;
+    }
+
+    if (strlen($end) > 3) {
+        $selesaiSplit = str_split($end, 2);
+    } else {
+        $hh = substr($end, 0, 1);
+        $mm = substr($end, 1);
+
+        $selesaiSplit[0] = $hh;
+        $selesaiSplit[1] = $mm;
+    }
+
+    $result['start'] = implode(":", $mulaiSplit);
+    $result['end'] = implode(":", $selesaiSplit);
+
+    return $result;
+}
+
+function trim_keterangan($input){ 
+    $splitInput = explode("|", $input);
+    
+    $acara = trim($splitInput[0]); 
+    $keterangan = trim($splitInput[1]);  
+
+    return ['acara' => $acara, 'keterangan' => $keterangan];
+}
+
 ?> 
