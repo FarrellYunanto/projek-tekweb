@@ -62,11 +62,11 @@
         <div class="content content center pt-2 pb-2 w-50 rounded-4">
             <div class="row text-center">
                 <div class="col-12">
-                    <h2 class="petraBlue-bold">Add New Room</h2>
+                    <h2 class="petraBlue-bold">Edit Ruangan</h2>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Kode Ruangan</label>
-                    <input type="text" id="kodeRuang" class="form-control" placeholder="Kode Ruangan" require>
+                    <input type="text" id="kodeRuang" class="form-control" value="P204" placeholder="Kode Ruangan" disabled>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Nama Ruangan</label>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-12 pb-2">
                     <button class="btn float-start" style="font-weight: bold; background-color: #03396c; color: white;"
-                        onclick="sendData()">Tambah</button>
+                        onclick="sendData()">Edit</button>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
             var namaRuang = $('#namaRuang').val();
             var kapasitas = $(`#kapasitasRuang`).val();
             var img = $(`#gambarRuang`).val();
-            var processType = "addRuangan";
+            var processType = "editRuangan";
 
             var formData = {
                 kodeRuang: kodeRuang,
