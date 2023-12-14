@@ -1,1 +1,1 @@
-<?php header("Location: pinjam.php") ?>
+<?php header("Location: pinjam.php"); ?>
