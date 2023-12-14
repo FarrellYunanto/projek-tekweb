@@ -1,6 +1,7 @@
 <?php 
 require("../connect.php");
 
+//Fetch Data
 $db = $conn;
 $tableName = "ruangan";
 $columns = ['id_ruangan', 'kode_ruangan', 'nama_ruangan', 'kapasitas'];

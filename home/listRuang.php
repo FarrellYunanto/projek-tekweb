@@ -1,5 +1,7 @@
 <?php
     require("process.php");
+    include("../navbar.php");
+
     $title = "room";
 ?> 
 
@@ -17,6 +19,11 @@
 
     <title>Document</title>
 </head>
+
+<style>
+    
+</style>
+
 <body>
     <div class="container">
         <div class="row">

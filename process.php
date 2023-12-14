@@ -1,5 +1,6 @@
 <?php 
 require("connect.php");
+session_start();
 $success = false;
 $message = '';
 // processType 1 = register
@@ -37,6 +38,8 @@ if(isset($_POST['processType']) && $_POST['processType'] == 1){
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $success = true;
+            $_SESSION['username'] = "nurdin";
+            $_SESSION['user_type'] = "bukanadmin";
         } else {
             $message = "Wrong password or email!";
         }
