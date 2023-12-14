@@ -27,18 +27,23 @@
 <body>
     <div class="container">
         <div class="row">
-        
-            <div class="col lg-4 md-4 sm-6 mt-5 pb-5">
-                <!--Card--> 
-                <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+            <!--Card--> 
+            <?php foreach($rooms as $room): ?>
+                <div class="col-4 lg-4 md-4 sm-6 mt-5 pb-5">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<?php echo $room['img_dir']; ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $room['kode_ruangan']; ?></h5>
+                            <p class="card-text">
+                                <label><?= $room['nama_ruangan'];  ?></label>
+                                <br>
+                                <label><?= "Kapasitas Ruangan: " . $room['kapasitas'];  ?></label>
+                            </p>
+                            <a href="../peminjaman/pinjam.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>" class="btn" style="background-color: #03396c; color : white;">Pinjam Ruang</a>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>

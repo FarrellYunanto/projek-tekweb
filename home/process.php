@@ -4,7 +4,7 @@ require("../connect.php");
 //Fetch Data
 $db = $conn;
 $tableName = "ruangan";
-$columns = ['id_ruangan', 'kode_ruangan', 'nama_ruangan', 'kapasitas'];
+$columns = ['id_ruangan', 'kode_ruangan', 'nama_ruangan', 'kapasitas', 'img_dir'];
 $rooms = fetch_ruangan($db, $tableName, $columns); 
 
 function fetch_ruangan($db, $tableName, $columns) {
