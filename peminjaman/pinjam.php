@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Kode Ruang</label>
-                    <input type="text" id="kodeRuang" class="form-control" value="P204" placeholder="P204" disabled>
+                    <input type="text" id="kodeRuang" class="form-control" value="<?php echo $_GET['kode_ruangan']?>" placeholder="<?php echo $_GET['kode_ruangan']?>" disabled>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Tanggal</label>

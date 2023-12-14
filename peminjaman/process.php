@@ -1,5 +1,6 @@
 <?php
 require("../connect.php");
+session_start();
 $db = $conn;
 $success = false;
 $message = '';
@@ -74,7 +75,7 @@ if (isset($_POST['kodeRuang']) && isset($_POST['tanggal']) && isset($_POST['mula
         if (!$bentrok) {   // insert jika tidak dabrakan
             $sql = "INSERT INTO peminjaman (id_ruangan, id_user, tanggal_peminjaman, start, end, keterangan) VALUES (?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$id_ruangan,1, $_POST['tanggal'], $_POST['mulai'], $_POST['selesai'], $_POST['keterangan']]);
+            $stmt->execute([$id_ruangan,$_SESSION['id'], $_POST['tanggal'], $_POST['mulai'], $_POST['selesai'], $_POST['keterangan']]);
             $success = true;
             $message = "Berhasil membuat peminjaman!";
         }
