@@ -20,6 +20,8 @@
     <style>
         .content {
             border: 1px solid #eee6e6;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .petraBlue {
@@ -55,8 +57,9 @@
 </head>
 
 <body>
+    <?php include ("../navbar.php") ?>
     <div class="container h-100">
-        <div class="content content center pt-2 pb-2 w-50 rounded-4">
+        <div class="content center pt-2 pb-2 w-50 rounded-4 mt-2 ">
             <div class="row text-center">
                 <div class="col-12">
                     <h2 class="petraBlue-bold">PINJAM RUANG</h2>
