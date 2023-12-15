@@ -2,7 +2,7 @@
     session_start();
     if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
         header("Location: ../login.php");
-        exit;
+        exit; 
     } 
 ?>
 
@@ -60,10 +60,12 @@
                     echo'<li class="nav-item">
                             <a class="nav-link text-white" href="#">Daftar Peminjaman Admin</a>
                         </li>';
-                        // ... masi tunggu fitur laen janlupa tambahin :D 
+                    echo'<li class="nav-item">
+                            <a class="nav-link text-white" href="../admin/banuser.php">Ban User</a>
+                        </li>';
                     } else {
                     echo '<li class="nav-item">
-                        <a class="nav-link text-white" href="#">Daftar Peminjaman Pribadi</a> 
+                        <a class="nav-link text-white" href="../home/listPinjaman.php">Daftar Peminjaman Pribadi</a> 
                     </li>';
                     }
                     ?>
