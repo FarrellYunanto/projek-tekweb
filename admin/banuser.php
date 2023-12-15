@@ -1,5 +1,6 @@
 <?php
-    require('connect.php');
+    require('../connect.php');
+    include('../navbar.php')
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@
                 <button class="btn btn-primary btn-sm" id="kembali" onclick="goToIndexPage()">KEMBALI</button>
                 <script>
                 function goToIndexPage() {
-                window.location.href = "index.php";
+                window.location.href = "../home/index.php";
                 }
                 </script>
             </div>

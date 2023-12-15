@@ -1,5 +1,5 @@
 <?php
-    require('connect.php');
+    require('../../connect.php');
 
     if(isset($_POST['id_user'])){
         $id_user = $_POST['id_user'];
