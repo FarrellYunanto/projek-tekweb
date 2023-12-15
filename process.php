@@ -18,9 +18,9 @@ if(isset($_POST['processType']) && $_POST['processType'] == 1){
             $message = "NRP sudah terdaftar";
         } else {
             //insert account baru
-            $sql = "INSERT INTO user (nrp, password, nama, email) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO user (nrp, password, nama, email, status_ban) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$_POST['nrp'], $_POST['password'], $_POST['nama'], $_POST['email']]);
+            $stmt->execute([$_POST['nrp'], $_POST['password'], $_POST['nama'], $_POST['email'], 1]);
             $success = true;
             $message = "Berhasil membuat akun, silahkan login!";
         }
@@ -40,16 +40,20 @@ if(isset($_POST['processType']) && $_POST['processType'] == 1){
             $stmt->execute();
             if ($stmt->rowCount() > 0) {
                 //ambil data user buat session
-                $query = "SELECT " . "id_user, nama" . 
+                $query = "SELECT " . "id_user, nama, status_ban" . 
                 " FROM user
                 where email = \"" . $_POST['email'] . "\"";
                 $request = $db->query($query);
                 $userData = $request->fetch();
-    
-                $success = true;
-                $_SESSION['id'] = $userData['id_user'];
-                $_SESSION['username'] = $userData['nama'];
-                $_SESSION['user_type'] = "bukanadmin";
+
+                if ($userData['status_ban'] == 1) {
+                    $success = true;
+                    $_SESSION['id'] = $userData['id_user'];
+                    $_SESSION['username'] = $userData['nama'];
+                    $_SESSION['user_type'] = "bukanadmin";
+                } else {
+                    $message = "Akun anda tersuspend mohon hubungi admin!";
+                }
             } else {
                 $message = "Wrong password or email!";
             }

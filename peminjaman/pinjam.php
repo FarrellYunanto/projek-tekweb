@@ -20,6 +20,8 @@
     <style>
         .content {
             border: 1px solid #eee6e6;
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .petraBlue {
@@ -55,15 +57,16 @@
 </head>
 
 <body>
-    <div class="container h-100">
-        <div class="content content center pt-2 pb-2 w-50 rounded-4">
+    <?php include ("../navbar.php") ?>
+    <div class="container h-100 pt-5">
+        <div class="content center pt-2 pb-2 w-50 rounded-4 mt-2 ">
             <div class="row text-center">
                 <div class="col-12">
                     <h2 class="petraBlue-bold">PINJAM RUANG</h2>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Kode Ruang</label>
-                    <input type="text" id="kodeRuang" class="form-control" value="P204" placeholder="P204" disabled>
+                    <input type="text" id="kodeRuang" class="form-control" value="<?php echo $_GET['kode_ruangan']?>" placeholder="<?php echo $_GET['kode_ruangan']?>" disabled>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Tanggal</label>
@@ -76,6 +79,9 @@
                 <div class="col-6 pb-2 accordion">
                     <label for="" class="float-start" style="font-size: larger;">Selesai</label>
                     <input type="text" id="selesai" class="form-control" placeholder="hhmm" required>
+                </div>
+                <div class="">
+                    <label id="notice" class="" style="color: red; "></label>
                 </div>
                 <div class="col-12 pb-3">
                     <label for="" class="float-start" style="font-size: larger;">Acara</label>
@@ -93,7 +99,7 @@
         </div>
     </div>
 
-    <script>
+    <script> // supaya tidak bisa pinjam di masa lalu
         $(function () {
             var dtToday = new Date();
 
@@ -111,7 +117,69 @@
         });
     </script>
 
-    <script>
+    <script> //live cek bentrok
+        $('#mulai').on('keyup', (event) => {
+            var kodeRuang = $(`#kodeRuang`).val();
+            var tanggal = $('#tanggal').val();
+            var mulai = $(`#mulai`).val();
+            var selesai = $(`#selesai`).val();
+
+            var formData = {
+                kodeRuang: kodeRuang,
+                tanggal: tanggal,
+                mulai: mulai,
+                selesai: selesai,
+            };
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: formData,
+                dataType: "json",
+                success: (e) => {
+                    console.log(e);
+                    if (!e.success) {
+                        if(e.message != "Data tidak lengkap!"){
+                            $("#notice").text(e.message);
+                        }
+                    } else if (e.success) {
+                        $("#notice").text("");
+                    }
+                }
+            });
+        })
+
+        $('#selesai').on('keyup', (event) => {
+            var kodeRuang = $(`#kodeRuang`).val();
+            var tanggal = $('#tanggal').val();
+            var mulai = $(`#mulai`).val();
+            var selesai = $(`#selesai`).val();
+
+            var formData = {
+                kodeRuang: kodeRuang,
+                tanggal: tanggal,
+                mulai: mulai,
+                selesai: selesai,
+            };
+            $.ajax({
+                type: "POST",
+                url: "process.php",
+                data: formData,
+                dataType: "json",
+                success: (e) => {
+                    console.log(e);
+                    if (!e.success) {
+                        if(e.message != "Data tidak lengkap!"){
+                            $("#notice").text(e.message);
+                        }
+                    } else if (e.success) {
+                        $("#notice").text("");
+                    }
+                }
+            });
+        })
+    </script>
+
+    <script> // buat kirim data
         function sendData() {
             var kodeRuang = $(`#kodeRuang`).val();
             var tanggal = $('#tanggal').val();
