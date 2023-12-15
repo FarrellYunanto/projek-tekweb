@@ -66,7 +66,7 @@
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Kode Ruangan</label>
-                    <input type="text" id="kodeRuang" class="form-control" value="P204" placeholder="Kode Ruangan" disabled>
+                    <input type="text" id="kodeRuang" class="form-control" value="<?= $_GET['kode_ruangan'] ?>" disabled>
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Nama Ruangan</label>
