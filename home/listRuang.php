@@ -31,7 +31,7 @@
             <?php foreach($rooms as $room): ?>
                 <div class="col-4 lg-4 md-4 sm-6 mt-5 pb-5">
                     <div class="card" style="width: 18rem;">
-                        <img src="<?php echo $room['img_dir']; ?>" class="card-img-top" alt="...">
+                        <img src="../img/<?php echo $room['img_dir'];?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $room['kode_ruangan']; ?></h5>
                             <p class="card-text">
@@ -39,7 +39,10 @@
                                 <br>
                                 <label><?= "Kapasitas Ruangan: " . $room['kapasitas'];  ?></label>
                             </p>
-                            <a href="../peminjaman/pinjam.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>" class="btn" style="background-color: #03396c; color : white;">Pinjam Ruang</a>
+                            <a href="../peminjaman/pinjam.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>" class="btn" style="background-color: #03396c; color : white; font-weight : bold">Pinjam Ruang</a>
+                            <?php if ($_SESSION['user_type'] == "admin")  { ?>
+                                <a href="../admin/editRuangan.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>" class="btn" style="background-color: #ffe505; color : black; font-weight : bold">Edit Ruang</a>
+                            <?php } ?> 
                         </div>
                     </div>
                 </div>
