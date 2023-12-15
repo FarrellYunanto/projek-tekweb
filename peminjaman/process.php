@@ -30,7 +30,13 @@ if (isset($_POST['kodeRuang']) && isset($_POST['tanggal']) && isset($_POST['mula
     //cek format jam
     $mulaiFormat = strlen($_POST['mulai']);
     $selesaiFormat = strlen($_POST['selesai']);
-    if ($mulaiFormat >= 3 && $mulaiFormat <= 4 && $selesaiFormat >= 3 && $selesaiFormat <= 4) {
+
+    if ($_POST['mulai'] < 830 || $_POST['selesai'] < 830 || $_POST['mulai'] >  1930 || $_POST['selesai'] > 2030) {
+        $rangeWaktu = false;
+    } else {
+        $rangeWaktu = true;
+    }
+    if ($mulaiFormat >= 3 && $mulaiFormat <= 4 && $selesaiFormat >= 3 && $selesaiFormat <= 4 && $rangeWaktu == true) {
         foreach ($listPinjam as $pinjam) {
             if ($_POST['mulai'] >= $pinjam['start'] && $_POST['mulai'] < $pinjam['end']) { //buat cek bentrok jam mulai
 
@@ -98,7 +104,7 @@ if (isset($_POST['kodeRuang']) && isset($_POST['tanggal']) && isset($_POST['mula
             $message = "Berhasil membuat peminjaman!";
         }
     } else{
-        $message = "Format input jam salah!";
+        $message = "Ruangan dapat dipinjam mulai jam 8:30 sampai 20:30!";
     }
 
 
