@@ -31,12 +31,20 @@ if (true) {
         });
     </script>
 </head>
+<style>
+    .container {
+        padding-top : 100px;
+    }
+</style>
 <body>
-    <?php include("../navbar.php") ?>
-    <table id="myTable" class="display">
+    <?php 
+        include("../navbar.php");
+    ?>
+    <div class="container">
+    <table id="myTable" class="table">
         <thead>
             <tr>
-                <th>ID Ruangan</th>
+                <th>Kode Ruangan</th>
                 <th>Tanggal Peminjaman</th>
                 <th>Start-End</th>
                 <th>Acara</th>
@@ -47,8 +55,19 @@ if (true) {
         <tbody>
             <!-- Isi tabel dengan data dari $result -->
             <?php foreach ($result as $row): ?>
+                <?php
+                #fetch kode_ruangan
+                $meh = $row['id_ruangan'];
+                $fetchKodeRwangan = "SELECT " . "kode_ruangan" . 
+                " FROM ruangan
+                where id_ruangan = \"" . $meh . "\"";
+                
+                $stmt = $db->query($fetchKodeRwangan);
+                $meh = ($stmt->fetch());
+                $kode_ruangan = $meh['kode_ruangan'];
+                ?> 
                 <tr>
-                    <td><?= $row['id_ruangan']; ?></td>
+                    <td><?= $kode_ruangan; ?></td>
                     <td><?= $row['tanggal_peminjaman']; ?></td>
                     <?php $jam = convert_start_end($row['start'], $row['end']);
                     ?>
@@ -57,16 +76,12 @@ if (true) {
                     <td><?= $keterangan['acara']?></td>
                     <td><?= $keterangan['keterangan']?></td>
                     <td>
-                        <button class="btn btn-primary edit">
-                            <a style = "color: white; text-decoration: none"href="editPinjaman.php?id=<?=$row['id_ruangan']?>">Edit</a>
-                        </button>
-                        <button class="btn btn-danger delete">
-                            <a style = "color: white; text-decoration: none"href="deletePinjaman.php?id=<?=$row['id_ruangan']?>">Batalkan Peminjaman</a>
-                        </button>
+                    <a href="deletePinjaman.php?id_peminjaman=<?php echo $row['id_peminjaman'];?>" class="btn btn-danger">Batalkan Peminjaman</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
 </body>
 </html>
