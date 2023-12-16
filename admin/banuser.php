@@ -78,12 +78,12 @@
                             <td><?=$data['status_ban']?></td>
                             <td>
                             <?php if($data['status_ban'] == '1'): ?>
-                            <form action="ban.php" method="post">
+                            <form action="./ban/ban.php" method="post">
                                 <input type="hidden" name="id_user" value="<?=$data['id_user']?>">
                                 <button style="background-color: red" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure you want to ban this user?')">BAN USER</button>
                             </form>
                             <?php elseif($data['status_ban'] == '-1'): ?>
-                            <form action="unban.php" method="post">
+                            <form action="./ban/unban.php" method="post">
                                 <input type="hidden" name="id_user" value="<?=$data['id_user']?>">
                                 <button class="btn btn-primary btn-sm" onclick="return confirm('Are you sure you want to un-ban this user?')">UN-BAN USER</button>
                             </form>

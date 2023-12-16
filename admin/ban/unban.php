@@ -10,7 +10,7 @@
         $update_user->execute();
 
         if($update_user->rowCount() > 0){
-            header('location:banuser.php');
+            header('location: ../banuser.php');
         }
     }
 ?>

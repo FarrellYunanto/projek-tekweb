@@ -31,16 +31,11 @@ if (true) {
         });
     </script>
 </head>
-<style>
-    .container {
-        padding-top : 100px;
-    }
-</style>
 <body>
     <?php 
         include("../navbar.php");
     ?>
-    <div class="container">
+    <div class="container pt-5">
     <table id="myTable" class="table">
         <thead>
             <tr>
