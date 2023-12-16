@@ -29,4 +29,9 @@ if(isset($_POST['processType']) && $_POST['processType'] == 1){
         $message = "Error, data tidak lengkap!";
     }
 }
+
+echo json_encode([
+    'success' => $success,
+    'message' => $message
+]);
 ?>
