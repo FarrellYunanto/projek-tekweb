@@ -58,7 +58,7 @@
                     <?php 
                     if ($_SESSION['user_type'] == 'admin') {
                     echo'<li class="nav-item">
-                            <a class="nav-link text-white" href="#">Daftar Peminjaman Admin</a>
+                            <a class="nav-link text-white" href="../admin/index.php">Daftar Peminjaman Admin</a>
                         </li>';
                     echo'<li class="nav-item">
                             <a class="nav-link text-white" href="../admin/addAdmin.php">Add Admin</a>
