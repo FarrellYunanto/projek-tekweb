@@ -22,7 +22,7 @@
 					var tbl = document.querySelector("#tbl_peminjaman > tbody");
 					var tbl_res = '';
 					response.forEach((row) => {
-						var keterangan = row['keterangan'];
+						var keterangan = row['keterangan'].split("|");
 						tbl_res += `<tr>
 							<td>${row['id_peminjaman']}</td>
 							<td>${row['id_ruangan']}</td>
@@ -32,7 +32,7 @@
                             <td>${row['start']}</td>
                             <td>${row['end']}</td>
                             <td> ${keterangan[0]} </td>
-                            <td> ${keterangan[1]}</td>
+                            <td> ${keterangan[1]} </td>
 							<td>
 							<a class="btn btn-danger" href="delete.php?id_peminjaman=${row['id_peminjaman']}">Delete</a>
 							</td>
