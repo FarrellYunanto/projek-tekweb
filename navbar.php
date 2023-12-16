@@ -47,7 +47,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../home/userProfile.php">PinjamRuangan | Welcome, <?php echo $_SESSION['username']?></a>
+        <a class="navbar-brand" href="../home/userProfile.php">PinjamRuangan | Welcome, <?php echo $_SESSION['username'];?></a>';
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,6 +61,9 @@
                     if ($_SESSION['user_type'] == 'admin') {
                     echo'<li class="nav-item">
                             <a class="nav-link text-white" href="../admin/index.php">Daftar Peminjaman Admin</a>
+                        </li>';
+                    echo'<li class="nav-item">
+                            <a class="nav-link text-white" href="../admin/addRuangan.php">Add Ruangan</a>
                         </li>';
                     echo'<li class="nav-item">
                             <a class="nav-link text-white" href="../admin/addAdmin.php">Add Admin</a>
