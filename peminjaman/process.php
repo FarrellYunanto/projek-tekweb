@@ -34,7 +34,19 @@ if (isset($_POST['kodeRuang']) && isset($_POST['tanggal']) && isset($_POST['mula
     if ($_POST['mulai'] < 830 || $_POST['selesai'] < 830 || $_POST['mulai'] >  1930 || $_POST['selesai'] > 2030) {
         $rangeWaktu = false;
     } else {
+
         $rangeWaktu = true;
+
+        $waktuMulai = $_POST['mulai'];
+        $waktuSelesai = $_POST['selesai'];
+
+        $menitMulai = substr($waktuMulai, -2);
+        $menitSelesai = substr($waktuSelesai, -2);
+        
+        if ($menitMulai > 59 || $menitSelesai > 59) {
+            $rangeWaktu = false;
+            $message = "menit tidak bisa melebihi 59!";
+        }
     }
     if ($mulaiFormat >= 3 && $mulaiFormat <= 4 && $selesaiFormat >= 3 && $selesaiFormat <= 4 && $rangeWaktu == true) {
         foreach ($listPinjam as $pinjam) {
@@ -104,7 +116,9 @@ if (isset($_POST['kodeRuang']) && isset($_POST['tanggal']) && isset($_POST['mula
             $message = "Berhasil membuat peminjaman!";
         }
     } else{
-        $message = "Ruangan dapat dipinjam mulai jam 8:30 sampai 20:30!";
+        if($message == ''){
+            $message = "Ruangan dapat dipinjam mulai jam 8:30 sampai 20:30!";
+        }
     }
 
 
