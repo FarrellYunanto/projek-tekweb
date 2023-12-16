@@ -93,20 +93,30 @@
             var kodeRuang = $(`#kodeRuang`).val();
             var namaRuang = $('#namaRuang').val();
             var kapasitas = $(`#kapasitasRuang`).val();
-            var img = $(`#gambarRuang`).val();
+            var imgs = $('#gambarRuang')[0].files[0];
             var processType = "editRuangan";
 
-            var formData = {
-                kodeRuang: kodeRuang,
-                namaRuang: namaRuang,
-                kapasitas: kapasitas,
-                img: img,
-                processType: processType,
-            };
+            // var formData = {
+            //     kodeRuang: kodeRuang,
+            //     namaRuang: namaRuang,
+            //     kapasitas: kapasitas,
+            //     img: img,
+            //     processType: processType,
+            // };
+
+            var formData = new FormData();
+            formData.append("kodeRuang", kodeRuang);
+            formData.append("namaRuang", namaRuang);
+            formData.append("kapasitas", kapasitas);
+            formData.append("img", imgs);
+            formData.append("processType", processType);
+
             $.ajax({
                 type: "POST",
                 url: "process.php",
                 data: formData,
+                contentType: false,
+                processData: false,
                 dataType: "json",
                 success: (e) => {
                     console.log(e);
