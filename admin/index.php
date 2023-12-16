@@ -19,7 +19,6 @@ include("../navbar.php");
         <div class="row mt-5">
             <div class="col-12 d-flex flex-row justify-content-between">
                 <h1>List Peminjaman Ruangan</h1>
-                    <input type="date" id = "tanggal">
                 <span class="d-flex align-items-center">
                 <button class=" btn btn-primary" id = "btn_getPeminjaman">Tampilkan List</button>&nbsp;
                     </span>
