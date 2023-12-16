@@ -18,6 +18,7 @@ if(isset($_POST['nama'])|| isset($_POST['password'])){
         if($stmt->execute()){
             $success = true;
             $message = "Berhasil di update";
+            $_SESSION['username'] = $nama;
         }
         else{
             $message =  "Failed updated";

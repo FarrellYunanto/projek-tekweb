@@ -66,7 +66,7 @@ require ("../navbar.php");
 
 <body>
     
-    <img src="89411343_a2VREmXXg5s0NmqExQLy1is94HFXnAUirg9BTbznnq0 (1).jpg" alt="" >
+    <!-- <img src="89411343_a2VREmXXg5s0NmqExQLy1is94HFXnAUirg9BTbznnq0 (1).jpg" alt="" > -->
     <div class="container light-style flex-grow-1 container-p-y">
         <h1 class="heading">
             Hello <?= $_SESSION['username']?>
@@ -83,19 +83,19 @@ require ("../navbar.php");
             <div class="card-body">
                 <div class="form-group">
                 <label class="form-label">NRP </label>
-                    <input type="text" class="form-control mb-1" value=<?= $result['nrp']?> readonly>
+                    <input type="text" class="form-control mb-1" value="<?= $result['nrp']?>" readonly>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Nama</label>
-                    <input type="text" class="form-control" value=<?= $result['nama']?> readonly>
+                    <input type="text" class="form-control" value="<?= $result['nama'] ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Email</label>
-                    <input type="text" class="form-control mb-1" value= <?=$result['email']?> readonly>
+                    <input type="text" class="form-control mb-1" value= "<?=$result['email']?>" readonly>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control mb-1" value=<?=$result['password']?> readonly>
+                    <input type="password" class="form-control mb-1" value="<?=$result['password']?>" readonly>
                 </div>
                 <div class="text-right mt-3">
                     <a href="listRuang.php" class = "btn btn-primary" id= "cancelBtn">Back</a>
