@@ -41,7 +41,7 @@
                             </p>
                             <a href="../peminjaman/pinjam.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>" class="btn" style="background-color: #03396c; color : white; font-weight : bold">Pinjam Ruang</a>
                             <?php if ($_SESSION['user_type'] == "admin")  { ?>
-                                <a href="../admin/editRuangan.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>" class="btn" style="background-color: #ffe505; color : black; font-weight : bold">Edit Ruang</a>
+                                <a href="../admin/editRuangan.php?kode_ruangan=<?php echo $room['kode_ruangan'];?>&nama=<?= $room['nama_ruangan'];  ?>&kapasitas=<?= $room['kapasitas'];  ?>" class="btn" style="background-color: #ffe505; color : black; font-weight : bold">Edit Ruang</a>
                             <?php } ?> 
                         </div>
                     </div>

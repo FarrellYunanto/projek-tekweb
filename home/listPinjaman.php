@@ -2,11 +2,10 @@
 require("../connect.php");
 require("process.php");
 // Pastikan sesi sudah dimulai
-
+session_start();
 if (true) {
-    $id = 1;
     $stmt = $conn->prepare("SELECT * FROM peminjaman WHERE id_user = (?) ORDER BY tanggal_peminjaman");
-    $stmt->execute([$id]); // Perbaikan: Tambahkan eksekusi
+    $stmt->execute([$_SESSION['id']]); // Perbaikan: Tambahkan eksekusi
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>

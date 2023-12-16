@@ -29,14 +29,16 @@ if(isset($_POST['processType']) && $_POST['processType'] == "addRuangan"){
 else if(isset($_POST['processType']) && $_POST['processType'] == "editRuangan"){
     //cek data tidak boleh ada yang kosong
     if(isset($_POST['kodeRuang']) && isset($_POST['namaRuang']) && isset($_POST['kapasitas']) && isset($_POST['img']) && !($_POST['kodeRuang'] == '' || $_POST['namaRuang'] == '' || $_POST['kapasitas'] == '')){
+        $kodeRuang = $_POST['kodeRuang'];
         $namaRuangan = $_POST['namaRuang'];
         $kapasitas = $_POST['kapasitas'];
         $img = $_POST['img'];
         $stmt = $conn->prepare(
         "UPDATE `ruangan`
         SET  `nama_ruangan` = '$namaRuangan', `kapasitas` = '$kapasitas', `img_dir` = '$img'
-        WHERE kode_ruangan = \"" . "P204" . "\"");
+        WHERE kode_ruangan = \"" . $kodeRuang . "\"");
         $stmt->execute();
+        $success = true;
         $message = "Berhasil mengedit ruangan";
     } else {
         $message = "Error, data tidak lengkap!";

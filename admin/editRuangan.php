@@ -70,11 +70,11 @@
                 </div>
                 <div class="col-12 pb-2">
                     <label for="" class="float-start" style="font-size: larger;">Nama Ruangan</label>
-                    <input type="text" id="namaRuang" class="form-control" placeholder="Nama Ruangan" require>
+                    <input type="text" id="namaRuang" class="form-control" value="<?= $_GET['nama'] ?>" require>
                 </div>
                 <div class="col-12 pb-3">
                     <label for="" class="float-start" style="font-size: larger;">Kapasitas Ruangan</label>
-                    <input type="text" id="kapasitasRuang" class="form-control" placeholder="Kapasitas Ruangan" required>
+                    <input type="text" id="kapasitasRuang" class="form-control" value="<?= $_GET['kapasitas'] ?>" required>
                 </div>
                 <div class="col-12 pb-3">
                     <label for="" class="float-start" style="font-size: larger;">Gambar Ruangan</label>
@@ -124,10 +124,6 @@
                             icon: "success",
                             button: "OK"
                         });
-                        $(`#kodeRuang`).val('');
-                        $(`#namaRuang`).val('');
-                        $(`#kapasitasRuang`).val('');
-                        $(`#gambarRuang`).val('');
                     }
                 }
             });
