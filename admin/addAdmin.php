@@ -87,6 +87,7 @@ include("../navbar.php");
                             icon: "success",
                             button: "OK",
                         });
+                        location.reload();
                     }
                 },
             });
