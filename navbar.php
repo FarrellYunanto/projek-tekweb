@@ -63,6 +63,9 @@
                             <a class="nav-link text-white" href="../admin/index.php">Daftar Peminjaman Admin</a>
                         </li>';
                     echo'<li class="nav-item">
+                            <a class="nav-link text-white" href="../admin/addRuangan.php">Add Ruangan</a>
+                        </li>';
+                    echo'<li class="nav-item">
                             <a class="nav-link text-white" href="../admin/addAdmin.php">Add Admin</a>
                         </li>';
                     echo'<li class="nav-item">
