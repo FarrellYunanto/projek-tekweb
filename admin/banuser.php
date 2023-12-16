@@ -53,7 +53,7 @@
                 $check_data->execute();
 
                 if($check_data->rowCount() == 0): ?>
-                    <p>Tidak ada nomor resi yang ditambahkan</p>
+                    <p>Tidak ada data user</p>
 
                 <?php else: ?>
                 <br/>
