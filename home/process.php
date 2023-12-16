@@ -71,4 +71,20 @@ function trim_keterangan($input){
     return ['acara' => $acara, 'keterangan' => $keterangan];
 }
 
+function cari($keyword){
+    global $conn;
+    $keywordWithoutColon = str_replace(':', '', $keyword);
+    $keyword = trim($keywordWithoutColon);
+    $query = "SELECT * FROM peminjaman WHERE 
+          LOWER(id_ruangan) LIKE LOWER('%$keyword%') OR 
+          LOWER(tanggal_peminjaman) LIKE LOWER('%$keyword%') OR 
+          CAST(`start` AS CHAR) LIKE '%$keyword%' OR 
+          CAST(`end` AS CHAR) LIKE '%$keyword%' OR 
+          LOWER(keterangan) LIKE LOWER('%$keyword%')";
+    $stmt = $conn->prepare($query);
+    $stmt->execute(); // Perbaikan: Tambahkan eksekusi
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result; 
+}
+
 ?> 
