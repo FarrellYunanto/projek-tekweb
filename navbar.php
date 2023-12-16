@@ -61,6 +61,9 @@
                             <a class="nav-link text-white" href="#">Daftar Peminjaman Admin</a>
                         </li>';
                     echo'<li class="nav-item">
+                            <a class="nav-link text-white" href="../admin/addAdmin.php">Add Admin</a>
+                        </li>';
+                    echo'<li class="nav-item">
                             <a class="nav-link text-white" href="../admin/banuser.php">Ban User</a>
                         </li>';
                     } else {
